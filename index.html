@@ -3,11 +3,33 @@
 body{margin:0;font-family:Segoe UI,sans-serif;background:#f4f6fb;color:#111;padding-bottom:75px}.dark{background:#111827;color:#fff}.top{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:14px}.card{background:#fff;margin:10px;padding:12px;border-radius:12px}.dark .card{background:#1f2937;color:#fff}.nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff}.dark .nav{background:#1f2937}.nav button{flex:1;border:0;background:transparent;font-size:22px;padding:12px}.hidden{display:none}.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.day{text-align:center;border:1px solid #ddd;border-radius:8px;min-height:60px;padding:4px;cursor:pointer}.today{border:2px solid #2563eb}.btn{background:#2563eb;color:#fff;border:0;padding:8px 12px;border-radius:8px}input,textarea,select{width:100%;padding:8px;margin:4px 0;box-sizing:border-box}.red{color:#dc2626}.orange{color:#ea580c}.yellow{color:#ca8a04}.green{color:#16a34a}
 </style><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#2563eb"></head><body>
 <div class='top'><h2>🛠 Servis Vozidel</h2></div>
-<div id='calendarView'><div id='cal'></div><div id='dayDetail'></div></div>
-<div id='cars' class='hidden'><div class='card'><input id='search' placeholder='Hledat'></div><div id='carlist'></div></div>
+<div id='calendarView'>
+<div id="stats"></div><div id='cal'></div><div id='dayDetail'></div></div>
+<div id='cars' class='hidden'>
+<div class='card'>
+<input id='search' placeholder='Hledat vozidlo'>
+</div>
+
+<div id='carlist'></div>
+
+<div id='vehicleDetail'
+class='card hidden'>
+</div>
+
+</div>
 <div id='add' class='hidden'><div class='card'>
 <input id='spz' placeholder='SPZ'><input id='znacka' placeholder='Značka'><input id='majitel' placeholder='Majitel'><input id='telefon' placeholder='Telefon'>
-<input id='termin' type='date'><input id='zavada' placeholder='Závada'>
+<input id='termin' type='date'><select id="priorita">
+<option value="kriticka">🔴 Kritická</option>
+<option value="vysoka">🟠 Vysoká</option>
+<option value="normalni" selected>🟡 Normální</option>
+<option value="nizka">🟢 Nízká</option>
+</select>
+
+<textarea
+id="poznamka"
+placeholder="Poznámka k opravě">
+</textarea>
 <select id='stav'><option>Otevřeno</option><option>Čeká na díly</option><option>V opravě</option><option>Hotovo</option></select>
 <button class='btn' onclick='saveRepair()'>Uložit opravu</button></div></div>
 <div id='settings' class='hidden'><div class='card'><button class='btn' onclick='toggleDark()'>Tmavý režim</button><br><br><button class='btn' onclick='exportData()'>Export</button><br><br><input type='file' onchange='importData(event)'></div></div>
